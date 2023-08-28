@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
     <p className="info">
-      This is a visual theorem prover for the propositional fragment of multiplicative linear logic in prefix notation.
+      A visual theorem prover for the propositional fragment of multiplicative linear logic in prefix notation.
     </p>
     <p>
       <a href="/whatisthis">What do you mean? How does this work?</a>

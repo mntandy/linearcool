@@ -1,7 +1,13 @@
-import { useReducer,useEffect } from 'react'
+import { useReducer } from 'react'
 
 const useStateMachine = (initial,states,nextState,stateAction,impermissibleChanges) => {
-    const stateReducer = (state,next) => next ?? (nextState.get(state) ?? state)
+    const stateReducer = (state,next) => {
+        let current = next
+        while(current && stateAction.get(current)) {
+            stateAction.get(current)()
+            current = nextState.get(current)
+        }
+    }
     
     const [current,setNextState] = useReducer(stateReducer,initial)
   
@@ -12,11 +18,6 @@ const useStateMachine = (initial,states,nextState,stateAction,impermissibleChang
             throw new Error("Error: " + impermissibleChanges.get(next).get(current))
         setNextState(next)
     }
-
-    useEffect(() => {
-        if(current!==initial) stateAction.get(current)()
-        setNextState()
-    },[current])
 
     return {change}
 }

@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="centered columns">
-        <h1>LinearCool</h1>
+        <h1><a href="/">LinearCool</a></h1>
         <h2>A theorem prover for propositional multiplicative linear logic</h2>
         </div>
         <div className="centered columns">
