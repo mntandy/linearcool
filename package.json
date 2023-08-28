@@ -16,5 +16,8 @@
     "react-dom": "18.2.0",
     "remark": "^14.0.3",
     "remark-html": "^15.0.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.8"
   }
 }

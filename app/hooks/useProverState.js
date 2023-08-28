@@ -1,25 +1,27 @@
-import { useState,useEffect } from 'react'
+import { useReducer,useEffect } from 'react'
 
 const useStateMachine = (initial,states,nextState,stateAction,impermissibleChanges) => {
-    const [current,setCurrent] = useState(initial)
+    const stateReducer = (state,next) => next ?? (nextState.get(state) ?? state)
+    
+    const [current,setNextState] = useReducer(stateReducer,initial)
   
     const change = (next) => {
         if(!(next in states))
             throw new Error("Something is utterly wrong.")
         if(impermissibleChanges.has(next) && impermissibleChanges.get(next).has(current))
             throw new Error("Error: " + impermissibleChanges.get(next).get(current))
-        setCurrent(next)
+        setNextState(next)
     }
 
     useEffect(() => {
         if(current!==initial) stateAction.get(current)()
-            setCurrent(nextState.get(current) ? nextState.get(current) : current)
+        setNextState()
     },[current])
 
     return {change}
 }
 
-const useProverState = (actions,setWithTimer) => {   
+const useProverState = (actions) => {   
       const states = {
         INITIAL: "INITIAL",
         PLAY: "PLAY",
