@@ -1,7 +1,7 @@
 This is a visual theorem prover for the propositional fragment of multiplicative linear logic based on Polish (i.e. prefix) notation. For an introduction to linear logic, see [https://plato.stanford.edu/entries/logic-linear/](https://plato.stanford.edu/entries/logic-linear/)
 
 
-The source code can be found at [https://github.com/mntandy/linear-app](https://github.com/mntandy/linear-app)
+The source code can be found at [https://github.com/mntandy/linearcool](https://github.com/mntandy/linearcool)
 
 ## Polish notation and the formal language
 
